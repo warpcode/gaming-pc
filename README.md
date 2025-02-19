@@ -50,7 +50,7 @@ This can be installed directly through powershell.
 
 For the For the latest instructions, refer to the microsoft support page
 
-[https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell&pivots=windows-server-2025#enable-openssh-for-windows-server-2025](Enable SSH)
+[Enable SSH](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell&pivots=windows-server-2025#enable-openssh-for-windows-server-2025)
 
 but for quick execution, the current method is the following
 
