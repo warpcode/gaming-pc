@@ -16,6 +16,10 @@ If you get the screen warning you about the minimum requirements, you can run th
 
 https://github.com/warpcode/gaming-pc/blob/136309a14f3293f02a2469227d0c4a8603a3a551/scripts/BypassWindows11Requirements.bat#L1-L6
 
+#### What is this random install helper watermark remover??
+
+[Magic????](https://github.com/massgravel/Microsoft-Activation-Scripts)
+
 ### Chocolatey
 
 Ansible relies on chocolatey for installing packages.
