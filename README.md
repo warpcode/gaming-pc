@@ -14,7 +14,7 @@ If your hardware is old enough, you won't meet the minimum requirements to insta
 
 If you get the screen warning you about the minimum requirements, you can run the code from 
 
-https://github.com/warpcode/gaming-pc/blob/main/scripts/BypassWindows11Requirements.bat
+https://github.com/warpcode/gaming-pc/blob/136309a14f3293f02a2469227d0c4a8603a3a551/scripts/BypassWindows11Requirements.bat#L1-L6
 
 ### Chocolatey
 
@@ -30,10 +30,7 @@ For the latest instructions, refer to the chocolatey website
 
 but for quick execution, the current method is the following
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force;
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-```
+https://github.com/warpcode/gaming-pc/blob/9be8da3ea764ea8554ffdbd4863806c411089538/scripts/ProvisionWithChocolatey.ps1#L1-L2
 
 ### Ansible (for local only running)
 
