@@ -4,6 +4,18 @@ Ansible roles and scripts for setting up a Windows PC for gaming
 
 ## Pre-requisites
 
+### Installing Windows 11
+
+Pretty basic but if you're using older hardware, there are some tricks and hacks to ensure you are able to install Windows 11.
+
+#### Ignore Windows 11 requirements on install
+
+If your hardware is old enough, you won't meet the minimum requirements to install Windows. However, this can be bypassed. 
+
+If you get the screen warning you about the minimum requirements, you can run the code from 
+
+https://github.com/warpcode/gaming-pc/blob/main/scripts/BypassWindows11Requirements.bat
+
 ### Chocolatey
 
 Ansible relies on chocolatey for installing packages.
