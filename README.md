@@ -10,15 +10,33 @@ Pretty basic but if you're using older hardware, there are some tricks and hacks
 
 #### Ignore Windows 11 requirements on install
 
-If your hardware is old enough, you won't meet the minimum requirements to install Windows. However, this can be bypassed. 
+If your hardware is old enough, you won't meet the minimum requirements to install Windows. However, this can be bypassed.
 
-If you get the screen warning you about the minimum requirements, you can run the code from 
+If you get the screen warning you about the minimum requirements, you can run the code from
 
 https://github.com/warpcode/gaming-pc/blob/136309a14f3293f02a2469227d0c4a8603a3a551/scripts/BypassWindows11Requirements.bat#L1-L6
 
 #### What is this random install helper watermark remover??
 
 [Magic????](https://github.com/massgravel/Microsoft-Activation-Scripts)
+
+### Execution policy
+
+Many scripts require an execution policy of at least RemoteSigned
+
+First check what your policy is using
+
+```powershell
+Get-ExecutionPolicy
+```
+
+If this is restricted we can run the following to set it to RemoteSigned
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Force
+```
+
+Please note, Chocolate sets the policy to Bypass
 
 ### Chocolatey
 
