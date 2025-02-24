@@ -1,0 +1,10 @@
+---
+
+- name: Configure gaming services
+  hosts: all
+  gather_facts: true
+  become: yes
+  roles:
+    - nvidia_drivers
+    - minecraft
+    - game_launchers

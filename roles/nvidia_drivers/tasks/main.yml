@@ -1,0 +1,8 @@
+---
+- name: Install drivers
+  become: true
+  package:
+    name:
+      - geforce-game-ready-driver
+      # - nvidia-display-driver
+    use: win_chocolatey
