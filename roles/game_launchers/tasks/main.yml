@@ -1,0 +1,44 @@
+---
+
+- name: Amazon Games
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: amazongames
+    ignore_checksums: true
+
+- name: Emulation Station
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: emulationstation
+
+- name: Epic
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: epicgameslauncher
+
+- name: Gog
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: goggalaxy
+
+- name: Origin
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: origin
+
+- name: Retroarch
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: retroarch
+
+- name: Steam
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: steam
+    # ignore_checksums: "{{ pkg_mgr_install_pkg['win32nt']['ignore_checksums'] | default(omit) }}"
+
+- name: Ubisoft
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: ubisoft-connect
+    ignore_checksums: true
