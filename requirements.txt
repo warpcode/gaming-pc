@@ -1,0 +1,4 @@
+ansible
+ansible-lint
+yamllint
+pywinrm>=0.4.0
