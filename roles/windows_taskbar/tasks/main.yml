@@ -1,0 +1,90 @@
+---
+- name: Turn off feeds
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds
+    name: EnableFeeds
+    data: 0
+    type: dword
+    state: present
+
+- name: Turn off news and interest feeds
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds
+    name: ShellFeedsTaskbarViewMode
+    data: 2
+    type: dword
+    state: present
+
+- name: Disable task bar animation
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+    name: TaskbarAnimations
+    data: 0
+    type: dword
+    state: present
+
+- name: Remove Chat from the Taskbar
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+    name: TaskbarMn
+    data: 0
+    type: dword
+    state: present
+
+- name: Remove Widgets from the Taskbar
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+    name: TaskbarDa
+    data: 0
+    type: dword
+    state: present
+
+- name: Hide task view button
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced"
+    name: ShowTaskViewButton
+    data: 0
+    type: dword
+    state: present
+
+- name: Remove Search from the Taskbar
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search"
+    name: SearchboxTaskbarMode
+    data: 0
+    type: dword
+    state: present
+
+- name: Enable End task option for apps right click
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings
+    name: TaskbarEndTask
+    data: 0
+    type: dword
+    state: present
+
+- name: Align task bar to the left
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    name: TaskbarAl
+    data: 0
+    type: dword
+    state: present
