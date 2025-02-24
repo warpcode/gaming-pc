@@ -1,0 +1,346 @@
+---
+
+- name: Handle winRM
+  become: true
+  failed_when: false
+  ansible.windows.win_service:
+    name:
+      - WinRM
+    start_mode: "{{ 'auto' if ansible_user == 'vagrant' else 'manual' }}"
+
+- name: Handle OpenSSH
+  become: true
+  failed_when: false
+  ansible.windows.win_service:
+    name:
+      - sshd
+    start_mode: "{{ 'auto' if ansible_user == 'vagrant' else 'manual' }}"
+
+- name: Adobe Services to Disable
+  become: yes
+  failed_when: false
+  ansible.windows.win_service:
+    name: "{{ item }}"
+    start_mode: disabled
+  with_items:
+    - AGMService
+    - AGSService
+    - Adobe Acrobat Update
+    - Adobe Genuine Monitor Service
+    - Adobe Licensing Console
+    - AdobeARMservice
+    - AdobeIPCBroker
+    - AdobeUpdateService
+    - CCXProcess
+    - CoreSync
+
+- name: Services to automatic
+  become: yes
+  failed_when: false
+  ansible.windows.win_service:
+    name: "{{ item }}"
+    start_mode: auto
+  with_items:
+    - AudioEndpointBuilder
+    - AudioSrv
+    - BFE
+    - BrokerInfrastructure
+    - BthAvctpSvc
+    - BthHFSrv
+    - CDPUserSvc_*
+    - CoreMessagingRegistrar
+    - CryptSvc
+    - DPS
+    - DcomLaunch
+    - Dhcp
+    - DispBrokerDesktopSvc
+    - Dnscache
+    - DusmSvc
+    - EventLog
+    - EventSystem
+    - FontCache
+    - KeyIso
+    - LSM
+    - LanmanServer
+    - LanmanWorkstation
+    - MpsSvc
+    - OneSyncSvc_*
+    - Power
+    - ProfSvc
+    - RpcEptMapper
+    - RpcSs
+    - SENS
+    - SamSs
+    - Schedule
+    - SgrmBroker
+    - ShellHWDetection
+    - Spooler
+    - SysMain
+    - SystemEventsBroker
+    - TermService
+    - Themes
+    - TrkWks
+    - UserManager
+    - VGAuthService
+    - VMTools
+    - VaultSvc
+    - Wcmsvc
+    - WinDefend
+    - Winmgmt
+    - WlanSvc
+    - WpnUserService_*
+    - gpsvc
+    - iphlpsvc
+    - mpssvc
+    - nsi
+    - tiledatamodelsvc
+    - webthreatdefusersvc_*
+
+- name: Services to manual
+  become: yes
+  failed_when: false
+  ansible.windows.win_service:
+    name: "{{ item }}"
+    start_mode: manual
+  with_items:
+    - ALG
+    - AppIDSvc
+    - AppMgmt
+    - AppReadiness
+    - AppXSvc
+    - Appinfo
+    - AxInstSV
+    - BDESVC
+    - BTAGService
+    - BcastDVRUserService_*
+    - BluetoothUserService_*
+    - Browser
+    - CDPSvc
+    - COMSysApp
+    - CaptureService_*
+    - CertPropSvc
+    - ClipSVC
+    - ConsentUxUserSvc_*
+    - CredentialEnrollmentManagerUserSvc_*
+    - CscService
+    - DcpSvc
+    - DevQueryBroker
+    - DeviceAssociationBrokerSvc_*
+    - DeviceAssociationService
+    - DeviceInstall
+    - DevicePickerUserSvc_*
+    - DevicesFlowUserSvc_*
+    - DisplayEnhancementService
+    - DmEnrollmentSvc
+    - DsSvc
+    - DsmSvc
+    - EFS
+    - EapHost
+    - EntAppSvc
+    - FDResPub
+    - Fax
+    - FrameServer
+    - FrameServerMonitor
+    - GraphicsPerfSvc
+    - HomeGroupListener
+    - HomeGroupProvider
+    - HvHost
+    - IEEtwCollectorService
+    - IKEEXT
+    - InstallService
+    - InventorySvc
+    - IpxlatCfgSvc
+    - KtmRm
+    - LicenseManager
+    - LxpSvc
+    - MSDTC
+    - MSiSCSI
+    - McpManagementService
+    - MessagingService_*
+    - MicrosoftEdgeElevationService
+    - MixedRealityOpenXRSvc
+    - MsKeyboardFilter
+    - NPSMSvc_*
+    - NaturalAuthentication
+    - NcaSvc
+    - NcbService
+    - NcdAutoSetup
+    - NetSetupSvc
+    - Netman
+    - NgcCtnrSvc
+    - NgcSvc
+    - NlaSvc
+    - P9RdrService_*
+    - PNRPAutoReg
+    - PNRPsvc
+    - PcaSvc
+    - PeerDistSvc
+    - PenService_*
+    - PerfHost
+    - PhoneSvc
+    - PimIndexMaintenanceSvc_*
+    - PlugPlay
+    - PolicyAgent
+    - PrintNotify
+    - PrintWorkflowUserSvc_*
+    - PushToInstall
+    - QWAVE
+    - RasAuto
+    - RasMan
+    - RetailDemo
+    - RmSvc
+    - RpcLocator
+    - SCPolicySvc
+    - SCardSvr
+    - SDRSVC
+    - SEMgrSvc
+    - SNMPTRAP
+    - SNMPTrap
+    - SSDPSRV
+    - ScDeviceEnum
+    - SecurityHealthService
+    - Sense
+    - SensorDataService
+    - SensorService
+    - SensrSvc
+    - SessionEnv
+    - SharedAccess
+    - SharedRealitySvc
+    - SmsRouter
+    - SstpSvc
+    - StateRepository
+    - StiSvc
+    - StorSvc
+    - TabletInputService
+    - TapiSrv
+    - TextInputManagementService
+    - TieringEngineService
+    - TimeBroker
+    - TimeBrokerSvc
+    - TokenBroker
+    - TroubleshootingSvc
+    - TrustedInstaller
+    - UI0Detect
+    - UdkUserSvc_*
+    - UmRdpService
+    - UnistoreSvc_*
+    - UserDataSvc_*
+    - UsoSvc
+    - VSS
+    - VacSvc
+    - W32Time
+    - WEPHOSTSVC
+    - WFDSConMgrSvc
+    - WMPNetworkSvc
+    - WManSvc
+    - WPDBusEnum
+    - WSService
+    - WaaSMedicSvc
+    - WalletService
+    - WarpJITSvc
+    - WbioSrvc
+    - WcsPlugInService
+    - WdNisSvc
+    - WdiServiceHost
+    - WdiSystemHost
+    - WebClient
+    - Wecsvc
+    - WerSvc
+    - WiaRpc
+    - WinHttpAutoProxySvc
+    - WpcMonSvc
+    - WpnService
+    - XblAuthManager
+    - XblGameSave
+    - XboxGipSvc
+    - XboxNetApiSvc
+    - autotimesvc
+    - bthserv
+    - camsvc
+    - cbdhsvc_*
+    - cloudidsvc
+    - dcsvc
+    - defragsvc
+    - diagnosticshub.standardcollector.service
+    - diagsvc
+    - dmwappushservice
+    - dot3svc
+    - edgeupdate
+    - edgeupdatem
+    - embeddedmode
+    - fdPHost
+    - fhsvc
+    - hidserv
+    - icssvc
+    - lfsvc
+    - lltdsvc
+    - lmhosts
+    - msiserver
+    - netprofm
+    - p2pimsvc
+    - p2psvc
+    - perceptionsimulation
+    - pla
+    - seclogon
+    - smphost
+    - spectrum
+    - svsvc
+    - swprv
+    - upnphost
+    - vds
+    - vm3dservice
+    - vmicguestinterface
+    - vmicheartbeat
+    - vmickvpexchange
+    - vmicrdv
+    - vmicshutdown
+    - vmictimesync
+    - vmicvmsession
+    - vmicvss
+    - vmvss
+    - wbengine
+    - wcncsvc
+    - webthreatdefsvc
+    - wercplsupport
+    - wisvc
+    - wlidsvc
+    - wlpasvc
+    - wmiApSrv
+    - workfolderssvc
+    - wuauserv
+    - wudfsvc
+
+- name: Services to Delay
+  become: yes
+  failed_when: false
+  ansible.windows.win_service:
+    name: "{{ item }}"
+    start_mode: delayed
+  with_items:
+    - BITS
+    - DoSvc
+    - MapsBroker
+    - WSearch
+    - sppsvc
+    - wscsvc
+
+- name: Services to Disable
+  become: yes
+  failed_when: false
+  ansible.windows.win_service:
+    name: "{{ item }}"
+    start_mode: disabled
+  with_items:
+    - AJRouter
+    - AppVClient
+    - AssignedAccessManagerSvc
+    - DiagTrack
+    - DialogBlockingService
+    - NetTcpPortSharing
+    - RemoteAccess
+    - RemoteRegistry
+    - UevAgentService
+    - shpamsvc
+    - ssh-agent
+    - tzautoupdate
+    - uhssvc
