@@ -1,0 +1,17 @@
+---
+
+- name: Set Auto login
+  become: yes
+  ansible.windows.win_regedit:
+    path: "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon"
+    name: "{{ item.name }}"
+    data: "{{ item.value }}"
+    type: string
+    state: "{{ 'present' if windows_login_autologin_enable else 'absent' }}"
+  with_items:
+    - name: AutoAdminLogon
+      value: "{{ 1 if windows_login_autologin_enable else 0 }}"
+    - name: DefaultUsername
+      value: "{{ windows_login_autologin_user }}"
+    - name: DefaultPassword
+      value: "{{ windows_login_autologin_password }}"

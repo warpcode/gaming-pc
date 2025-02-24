@@ -1,0 +1,7 @@
+---
+
+windows_login_autologin_enable: false
+windows_login_autologin_user: "{{ ansible_user }}"
+windows_login_autologin_password: "{{ ansible_password }}"
+
+windows_login_lockscreen_disable: true
