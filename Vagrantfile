@@ -35,8 +35,16 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "shell", path: "scripts/ProvisionWithChocolatey.ps1"
   config.vm.provision "shell", path: "scripts/ProvisionWithOpenSSH.ps1"
 
-  config.vm.provision "playbook", type: "ansible" do |ansible|
-    ansible.playbook = './playbook.yml'
+  config.vm.provision "setup_windows", type: "ansible" do |ansible|
+    ansible.playbook = './setup-windows.yml'
+    ansible.limit    = 'vagrant'
+    ansible.inventory_path = 'inventory'
+    # ansible.verbose = "vvv"
+    ansible.extra_vars = ansible_vars
+  end
+
+  config.vm.provision "setup_gaming", type: "ansible" do |ansible|
+    ansible.playbook = './setup-gaming.yml'
     ansible.limit    = 'vagrant'
     ansible.inventory_path = 'inventory'
     # ansible.verbose = "vvv"
