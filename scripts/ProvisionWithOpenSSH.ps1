@@ -1,7 +1,7 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 
 # If it's not present, install it
-winget install "openssh beta"
+winget install "openssh beta" --accept-source-agreements --accept-package-agreements
 
 $firewallParams = @{
     Name        = 'sshd-Server-In-TCP'
