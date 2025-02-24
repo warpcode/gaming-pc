@@ -54,28 +54,12 @@ but for quick execution, the current method is the following
 
 https://github.com/warpcode/gaming-pc/blob/9be8da3ea764ea8554ffdbd4863806c411089538/scripts/ProvisionWithChocolatey.ps1#L1-L2
 
-### Ansible (for local only running)
+### Local
 
-To install ansible directly, we must install python first
+As of writing this, ansible does not support being run directly on a Windows host. 
+We must use OpenSSH or WinRM
 
-```powershell
-choco install python3
-```
-
-For the latest For the latest instructions, refer to the ansible install
-[documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible-with-pip)
-
-Then we have install ansible via pip
-
-```powershell
-    # If available but sometimes windows store will hijack it
-    python3 -m pip install ansible
-
-    # If so, find the exact version installed by choco
-    python3.13 -m pip install ansible
-```
-
-### SSH (if not using localhost or winrm)
+### SSH (if not using winrm)
 
 This can be installed directly through powershell.
 
@@ -83,7 +67,15 @@ For the For the latest instructions, refer to the microsoft support page
 
 [Enable SSH](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell&pivots=windows-server-2025#enable-openssh-for-windows-server-2025)
 
-but for quick execution, the current method is the following
+However, the following worked for me
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+winget install "openssh beta";
+```
+
+But trying the more official way below did not work for me.
+sshd would be scheduled for removal and gone on reboot
 
 ```powershell
     # Check if openssh server is installed
