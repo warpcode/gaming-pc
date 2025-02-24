@@ -1,0 +1,21 @@
+---
+
+- name: Enable Remote Destop
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: HKLM:\System\CurrentControlSet\Control\Terminal Server
+    name: fDenyTSConnections
+    data: "{{ 0 if windows_rdp_enable else 1 }}"
+    type: dword
+    state: present
+
+- name: Enforce user authentication
+  become: true
+  ignore_errors: true
+  ansible.windows.win_regedit:
+    path: HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp
+    name: UserAuthentication
+    data: 1
+    type: dword
+    state: "{{ 'present' if windows_rdp_enable else 'absent' }}"
