@@ -1,0 +1,9 @@
+---
+
+- name: Reboot
+  hosts: all
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Reboot Windows
+      ansible.windows.win_reboot:

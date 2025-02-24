@@ -1,0 +1,11 @@
+---
+
+- name: Shutdown
+  hosts: all
+  become: false
+  gather_facts: false
+  tasks:
+    - name: Shutdown host
+      win_command: shutdown.exe /s /f /t 5
+      async: 30
+      poll: 0
