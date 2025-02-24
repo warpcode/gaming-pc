@@ -1,0 +1,13 @@
+---
+
+- name: Ensure the OS is fully up to date
+  hosts: all
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: Install all security, critical, and rollup updates without a scheduled task
+      become: yes
+      ansible.windows.win_updates:
+        category_names: "*"
+        reboot: true
+        reboot_timeout: 3600

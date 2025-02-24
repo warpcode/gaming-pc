@@ -50,4 +50,12 @@ Vagrant.configure("2") do |config|
     # ansible.verbose = "vvv"
     ansible.extra_vars = ansible_vars
   end
+
+  config.vm.provision "update", type: "ansible", run: "never" do |ansible|
+    ansible.playbook = './install-updates.yml'
+    ansible.limit    = 'vagrant'
+    ansible.inventory_path = 'inventory'
+    # ansible.verbose = "vvv"
+    ansible.extra_vars = ansible_vars
+  end
 end
