@@ -1,0 +1,7 @@
+---
+
+- name: Minecraft
+  become: true
+  package:
+    name: minecraft-launcher
+    use: win_chocolatey
