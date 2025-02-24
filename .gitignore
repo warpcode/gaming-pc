@@ -1,2 +1,5 @@
 .obsidian
 .vagrant
+.venv
+venv
+
