@@ -1,0 +1,33 @@
+---
+- name: Enable dark mode for apps
+  ansible.windows.win_regedit:
+    path: "{{ item }}"
+    name: AppsUseLightTheme
+    data: 0
+    type: dword
+    state: present
+  with_items:
+    - "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+    - "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+
+- name: Enable dark mode for system
+  ansible.windows.win_regedit:
+    path: "{{ item }}"
+    name: SystemUseLightTheme
+    data: 0
+    type: dword
+    state: present
+  with_items:
+    - "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+    - "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+
+- name: Enable system wide dark mode
+  ansible.windows.win_regedit:
+    path: "{{ item }}"
+    name: SystemUsesLightTheme
+    data: 0
+    type: dword
+    state: present
+  with_items:
+    - "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
+    - "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
