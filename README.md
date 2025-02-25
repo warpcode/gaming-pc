@@ -6,13 +6,17 @@ Ansible roles and scripts for setting up a Windows PC for gaming
 
 ### Installing Windows 11
 
-Pretty basic but if you're using older hardware, there are some tricks and hacks to ensure you are able to install Windows 11.
+Pretty basic but if you're using older hardware, there are some tricks and hacks
+to ensure you are able to install Windows 11.
 
 #### Ignore Windows 11 requirements on install
 
-If your hardware is old enough, you won't meet the minimum requirements to install Windows. However, this can be bypassed.
+If your hardware is old enough, you won't meet the minimum requirements
+to install Windows.
+However, this can be bypassed.
 
-If you get the screen warning you about the minimum requirements, you can run the code from
+If you get the screen warning you about the minimum requirements,
+you can run the code from
 
 https://github.com/warpcode/gaming-pc/blob/136309a14f3293f02a2469227d0c4a8603a3a551/scripts/BypassWindows11Requirements.bat#L1-L6
 
@@ -56,7 +60,7 @@ https://github.com/warpcode/gaming-pc/blob/9be8da3ea764ea8554ffdbd4863806c411089
 
 ### Local
 
-As of writing this, ansible does not support being run directly on a Windows host. 
+As of writing this, ansible does not support being run directly on a Windows host.
 We must use OpenSSH or WinRM
 
 ### SSH (if not using winrm)
@@ -98,3 +102,13 @@ sshd would be scheduled for removal and gone on reboot
         Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
     }
 ```
+
+## Emulation
+
+Emulation is a tricky and complex thing to handle in ansible.
+There are existing tools that make setting up emulation on Windows far easier including:
+
+- [EmuDeck](https://www.emudeck.com/)
+- [RetroBat](https://wiki.retrobat.org/)
+
+For entire OS solutions there are projects like [Batocera](https://batocera.org)
