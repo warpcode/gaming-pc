@@ -5,6 +5,7 @@
   gather_facts: true
   become: yes
   roles:
-    - nvidia_drivers
+    - role: nvidia_drivers
+      when: ansible_user != 'vagrant'
     - minecraft
     - game_launchers
