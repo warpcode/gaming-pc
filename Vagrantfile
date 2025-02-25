@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "setup_windows", type: "ansible" do |ansible|
     ansible.playbook = './setup-windows.yml'
     ansible.limit    = 'vagrant'
-    ansible.inventory_path = 'inventory'
+    ansible.inventory_path = 'inventory.example'
     # ansible.verbose = "vvv"
     ansible.extra_vars = ansible_vars
   end
@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "setup_gaming", type: "ansible" do |ansible|
     ansible.playbook = './setup-gaming.yml'
     ansible.limit    = 'vagrant'
-    ansible.inventory_path = 'inventory'
+    ansible.inventory_path = 'inventory.example'
     # ansible.verbose = "vvv"
     ansible.extra_vars = ansible_vars
   end
@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "reboot", type: "ansible", run: "never" do |ansible|
     ansible.playbook = './reboot.yml'
     ansible.limit    = 'vagrant'
-    ansible.inventory_path = 'inventory'
+    ansible.inventory_path = 'inventory.example'
     # ansible.verbose = "vvv"
     ansible.extra_vars = ansible_vars
   end
@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "update", type: "ansible", run: "never" do |ansible|
     ansible.playbook = './install-updates.yml'
     ansible.limit    = 'vagrant'
-    ansible.inventory_path = 'inventory'
+    ansible.inventory_path = 'inventory.example'
     # ansible.verbose = "vvv"
     ansible.extra_vars = ansible_vars
   end
