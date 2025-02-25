@@ -8,9 +8,9 @@
     windows_rdp_enable: true
   roles:
     - windows_powershell
+    - windows_login
     - windows_rdp
     - windows_theme
-    - windows_login
     - windows_taskbar
-    # - windows_services
+    - windows_services
     # - windows_enhancements
