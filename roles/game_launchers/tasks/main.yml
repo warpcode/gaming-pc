@@ -6,11 +6,6 @@
     name: amazongames
     ignore_checksums: true
 
-- name: Emulation Station
-  become: true
-  chocolatey.chocolatey.win_chocolatey:
-    name: emulationstation
-
 - name: Epic
   become: true
   chocolatey.chocolatey.win_chocolatey:
