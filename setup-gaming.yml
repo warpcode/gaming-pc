@@ -7,5 +7,4 @@
   roles:
     - role: nvidia_drivers
       when: ansible_user != 'vagrant'
-    - minecraft
     - game_launchers

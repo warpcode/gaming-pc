@@ -5,3 +5,5 @@ windows_login_autologin_user: "{{ ansible_user }}"
 windows_login_autologin_password: "{{ ansible_password }}"
 
 windows_login_lockscreen_disable: true
+windows_login_lockworkstation_disable: true
+
