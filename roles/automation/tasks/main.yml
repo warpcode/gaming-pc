@@ -1,0 +1,17 @@
+---
+
+- name: Auto Mouse Click
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: automouseclick
+
+- name: Autoit
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: autoit
+
+# Windwos defender detected a virus
+# - name: Auto hotkey
+#   become: true
+#   chocolatey.chocolatey.win_chocolatey:
+#     name: autohotkey

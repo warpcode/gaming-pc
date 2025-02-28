@@ -1,0 +1,13 @@
+---
+
+- name: Activate Windows subsystem for linux
+  become: yes
+  ansible.windows.win_optional_feature:
+    name: Microsoft-Windows-Subsystem-Linux
+    state: present
+
+- name: Activate Windows virtual machine platform
+  become: yes
+  ansible.windows.win_optional_feature:
+    name: VirtualMachinePlatform
+    state: present

@@ -7,4 +7,6 @@
   roles:
     - role: nvidia_drivers
       when: ansible_user != 'vagrant'
+    - automation
     - game_launchers
+    - game_modding

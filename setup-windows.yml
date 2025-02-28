@@ -12,5 +12,7 @@
     - windows_rdp
     - windows_theme
     - windows_taskbar
+    - windows_tools
+    - windows_virtualisation
     - windows_services
     # - windows_enhancements

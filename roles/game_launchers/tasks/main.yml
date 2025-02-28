@@ -30,7 +30,6 @@
   become: true
   chocolatey.chocolatey.win_chocolatey:
     name: steam
-    # ignore_checksums: "{{ pkg_mgr_install_pkg['win32nt']['ignore_checksums'] | default(omit) }}"
 
 - name: Ubisoft
   become: true

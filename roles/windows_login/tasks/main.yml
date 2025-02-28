@@ -16,7 +16,6 @@
     - name: DefaultPassword
       value: "{{ windows_login_autologin_password }}"
 
-
 - name: Ensure personalisation key exists
   ansible.windows.win_regedit:
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization

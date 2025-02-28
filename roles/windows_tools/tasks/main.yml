@@ -1,0 +1,38 @@
+---
+
+- name: All .Net Framework (2,3,4)
+  become: true
+  ansible.windows.win_optional_feature:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - NetFx4-AdvSrvs
+    - NetFX3
+
+- name: Latest .Net Framework
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name:
+      - dotnet
+      - dotnetfx
+      - dotnet-sdk
+    state: present
+
+- name: Visual c++ runtimes
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name:
+      - vcredist140
+      - vcredist2005
+      - vcredist2008
+      - vcredist2010
+      - vcredist2012
+      - vcredist2015
+      - vcredist2017
+    state: present
+
+- name: Powertoys
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: powertoys
+    state: present

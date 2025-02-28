@@ -1,0 +1,6 @@
+---
+
+- name: Vortex
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: vortex
