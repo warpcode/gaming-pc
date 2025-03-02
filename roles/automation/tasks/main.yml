@@ -5,13 +5,14 @@
   chocolatey.chocolatey.win_chocolatey:
     name: automouseclick
 
-- name: Autoit
+- name: Auto hotkey
   become: true
   chocolatey.chocolatey.win_chocolatey:
-    name: autoit
+    name: autohotkey
 
-# Windwos defender detected a virus
-# - name: Auto hotkey
+# Windows defender detected a virus
+# - name: Autoit
 #   become: true
 #   chocolatey.chocolatey.win_chocolatey:
-#     name: autohotkey
+#     name: autoit
+
