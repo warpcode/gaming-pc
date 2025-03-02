@@ -1,0 +1,19 @@
+---
+
+- name: Retroarch
+  become: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: retroarch
+
+- name: Start retroarch in full screen using lineinfile
+  community.windows.win_lineinfile:
+    path: "{{ emulation_retroarch_install_path }}retroarch.cfg"
+    regex: '^video_fullscreen ='
+    line: 'video_fullscreen = "true"'
+
+- name: Process cores
+  ansible.builtin.include_tasks: retroarch_core.yml
+  loop: "{{ emulation_retroarch_cores }}"
+  loop_control:
+    loop_var: _emulation_retroarch_core_dl
+

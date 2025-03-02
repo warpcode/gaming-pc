@@ -1,0 +1,22 @@
+---
+
+- name: "Check if the core already exists ({{ _emulation_retroarch_core_dl }})"
+  win_stat:
+    path: "{{ emulation_retroarch_install_path }}\\cores\\{{ _emulation_retroarch_core_dl }}{{ emulation_retroarch_cores_suffix }}" 
+  register: _emulation_retroarch_core_dl_stat
+
+- name: "Download core ({{ _emulation_retroarch_core_dl }})"
+  ansible.windows.win_get_url:
+    url: "{{ emulation_retroarch_cores_base_url }}/{{ _emulation_retroarch_core_dl }}{{ emulation_retroarch_cores_suffix }}.zip"
+    dest: '%TEMP%\{{ _emulation_retroarch_core_dl }}{{ emulation_retroarch_cores_suffix }}.zip'
+  when:
+    - not _emulation_retroarch_core_dl_stat.stat.exists
+
+- name: "Exract core ({{ _emulation_retroarch_core_dl }})"
+  community.windows.win_unzip:
+    src: '%TEMP%\{{ _emulation_retroarch_core_dl }}{{ emulation_retroarch_cores_suffix }}.zip'
+    dest: "{{ emulation_retroarch_install_path }}\\cores\\"
+    creates: "{{ emulation_retroarch_install_path }}\\cores\\{{ _emulation_retroarch_core_dl }}{{ emulation_retroarch_cores_suffix }}"
+    delete_archive: true
+  when:
+    - not _emulation_retroarch_core_dl_stat.stat.exists

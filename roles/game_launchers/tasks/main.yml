@@ -21,11 +21,6 @@
   chocolatey.chocolatey.win_chocolatey:
     name: origin
 
-- name: Retroarch
-  become: true
-  chocolatey.chocolatey.win_chocolatey:
-    name: retroarch
-
 - name: Steam
   become: true
   chocolatey.chocolatey.win_chocolatey:

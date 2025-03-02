@@ -1,0 +1,11 @@
+---
+
+emulation_retroarch_install_path: "C:\\tools\\RetroArch-Win64\\"
+emulation_retroarch_cores_base_url: https://buildbot.libretro.com/nightly/windows/x86_64/latest/
+emulation_retroarch_cores_suffix: _libretro.dll
+emulation_retroarch_cores:
+  - citra
+  - dolphin
+  - pcsx2
+  - ppsspp
+  - swanstation
