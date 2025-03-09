@@ -1,15 +1,26 @@
 ---
-
 - name: Retroarch
   become: true
   chocolatey.chocolatey.win_chocolatey:
     name: retroarch
 
-- name: Start retroarch in full screen using lineinfile
+- name: Check if retroarch config exists
+  win_stat:
+    path: "{{ emulation_retroarch_install_path }}\\retroarch.cfg"
+  register: _emulation_retroarch_config_exists
+
+- name: Create an empty retroarch config if it doesn't exist
+  ansible.windows.win_file:
+    path: "{{ emulation_retroarch_install_path }}\\retroarch.cfg"
+    state: touch
+  when: not _emulation_retroarch_config_exists.stat.exists
+
+- name: Set config
   community.windows.win_lineinfile:
     path: "{{ emulation_retroarch_install_path }}retroarch.cfg"
-    regex: '^video_fullscreen ='
-    line: 'video_fullscreen = "true"'
+    regex: '^(# )?{{ item.name }} ='
+    line: '{{ item.name }} = "{{ item.value }}"'
+  loop: "{{ _emulation_retroarch_config }}"
 
 - name: Process cores
   ansible.builtin.include_tasks: retroarch_core.yml

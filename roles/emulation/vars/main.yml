@@ -1,0 +1,62 @@
+---
+
+_emulation_retroarch_config:
+  - name: assets_directory
+    value: "{{ emulation_retroarch_config_assets_path }}"
+
+  - name: cheat_database_path
+    value: "{{ emulation_retroarch_config_cheats_path }}"
+
+  - name: core_assets_directory
+    value: "{{ emulation_retroarch_config_core_assets_path }}"
+
+  - name: dynamic_wallpapers_directory
+    value: "{{ emulation_retroarch_config_wallpapers_path }}"
+
+  - name: input_remapping_directory
+    value: "{{ emulation_retroarch_config_input_remaps_path }}"
+
+  - name: libretro_directory
+    value: "{{ emulation_retroarch_config_cores_path }}"
+
+  - name: libretro_info_path
+    value: "{{ emulation_retroarch_config_info_path }}"
+
+  - name: log_dir
+    value: "{{ emulation_retroarch_config_logs_path }}"
+
+  - name: osk_overlay_directory
+    value: "{{ emulation_retroarch_config_keyboard_overlays_path }}"
+
+  - name: overlay_directory
+    value: "{{ emulation_retroarch_config_overlays_path }}"
+
+  - name: playlist_directory
+    value: "{{ emulation_retroarch_config_playlist_path }}"
+
+  - name: recording_config_directory
+    value: "{{ emulation_retroarch_config_recording_config_path }}"
+
+  - name: recording_output_directory
+    value: "{{ emulation_retroarch_config_recording_output_path }}"
+
+  - name: rgui_config_directory
+    value: "{{ emulation_retroarch_config_config_path }}"
+
+  - name: savefile_directory
+    value: "{{ emulation_retroarch_config_savefile_path }}"
+
+  - name: savestate_directory
+    value: "{{ emulation_retroarch_config_savestate_path }}"
+
+  - name: screenshot_directory
+    value: "{{ emulation_retroarch_config_screenshots_path }}"
+
+  - name: system_directory
+    value: "{{ emulation_retroarch_config_system_path }}"
+
+  - name: thumbnails_directory
+    value: "{{ emulation_retroarch_config_thumbnails_path }}"
+
+  - name: video_fullscreen
+    value: "true"

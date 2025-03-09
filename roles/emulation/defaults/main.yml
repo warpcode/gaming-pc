@@ -1,11 +1,37 @@
 ---
-
 emulation_retroarch_install_path: "C:\\tools\\RetroArch-Win64\\"
+emulation_retroarch_install_path_escaped: "{{ emulation_retroarch_install_path | regex_replace('\\\\', '\\\\\\\\') }}"
+
 emulation_retroarch_cores_base_url: https://buildbot.libretro.com/nightly/windows/x86_64/latest/
 emulation_retroarch_cores_suffix: _libretro.dll
 emulation_retroarch_cores:
-  - citra
-  - dolphin
-  - pcsx2
-  - ppsspp
-  - swanstation
+  - a5200 # atari 5200
+  - citra # Nintendo 3ds
+  - dolphin # Gamecube/wii
+  - pcsx2 # Playstation 2
+  - ppsspp # PSP
+  - prosystem #atari7600
+  - stella # atari2600
+  - swanstation # Playstation
+
+emulation_retroarch_config_base_path: ":\\"
+emulation_retroarch_config_assets_path: "{{ emulation_retroarch_config_base_path }}assets"
+emulation_retroarch_config_cheats_path: "{{ emulation_retroarch_config_base_path }}cheats"
+emulation_retroarch_config_config_path: "{{ emulation_retroarch_config_base_path }}config"
+emulation_retroarch_config_core_assets_path: "{{ emulation_retroarch_config_base_path }}downloads"
+emulation_retroarch_config_cores_path: "{{ emulation_retroarch_config_base_path }}cores"
+emulation_retroarch_config_cores_path_expanded: '{{ emulation_retroarch_config_cores_path | regex_replace("^:\\", emulation_retroarch_install_path_escaped) }}'
+emulation_retroarch_config_info_path: "{{ emulation_retroarch_config_base_path }}info"
+emulation_retroarch_config_input_remaps_path: "{{ emulation_retroarch_config_config_path }}\\remaps"
+emulation_retroarch_config_keyboard_overlays_path: "{{ emulation_retroarch_config_overlays_path }}\\keyboard"
+emulation_retroarch_config_logs_path: "{{ emulation_retroarch_config_base_path }}logs"
+emulation_retroarch_config_overlays_path: "{{ emulation_retroarch_config_base_path }}overlays"
+emulation_retroarch_config_playlist_path: "{{ emulation_retroarch_config_base_path }}playlists"
+emulation_retroarch_config_recording_config_path: "{{ emulation_retroarch_config_config_path }}\\record"
+emulation_retroarch_config_recording_output_path: "{{ emulation_retroarch_config_base_path }}recordings"
+emulation_retroarch_config_savefile_path: "{{ emulation_retroarch_config_base_path }}saves"
+emulation_retroarch_config_savestate_path: "{{ emulation_retroarch_config_base_path }}states"
+emulation_retroarch_config_screenshots_path: "{{ emulation_retroarch_config_base_path }}screenshots"
+emulation_retroarch_config_system_path: "{{ emulation_retroarch_config_base_path }}system"
+emulation_retroarch_config_thumbnails_path: "{{ emulation_retroarch_config_base_path }}thumbnails"
+emulation_retroarch_config_wallpapers_path: "{{ emulation_retroarch_config_assets_path }}\\wallpapers"
