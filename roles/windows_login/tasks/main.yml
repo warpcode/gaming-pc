@@ -1,5 +1,4 @@
 ---
-
 - name: Set Auto login
   become: yes
   ansible.windows.win_regedit:
@@ -7,10 +6,10 @@
     name: "{{ item.name }}"
     data: "{{ item.value }}"
     type: string
-    state: "{{ 'present' if windows_login_autologin_enable else 'absent' }}"
-  with_items:
+    state: "{{ windows_login_autologin_enable | ternary('present', 'absent') }}"
+  loop:
     - name: AutoAdminLogon
-      value: "{{ 1 if windows_login_autologin_enable else 0 }}"
+      value: "{{ windows_login_autologin_enable | ternary('1', '0') }}"
     - name: DefaultUsername
       value: "{{ windows_login_autologin_user }}"
     - name: DefaultPassword
@@ -26,7 +25,7 @@
     path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization
     name: NoLockScreen
     type: dword
-    data: "{{ 1 if windows_login_lockscreen_disable else 0 }}"
+    data: "{{ windows_login_lockscreen_disable | ternary('1', '0') }}"
     state: present
 
 - name: Disable locking the computer
@@ -34,7 +33,7 @@
     path: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
     name: DisableLockWorkstation
     type: dword
-    data: "{{ 1 if windows_login_lockworkstation_disable else 0 }}"
+    data: "{{ windows_login_lockworkstation_disable | ternary('1', '0') }}"
     state: present
 
 - name: Disable the timeout policy
@@ -42,5 +41,5 @@
     path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
     name: InactivityTimeoutSecs
     type: dword
-    data: ""
+    data: "{{ windows_login_lock_timeout }}"
     state: present

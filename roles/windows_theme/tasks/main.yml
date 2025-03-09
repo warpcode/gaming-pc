@@ -6,7 +6,7 @@
     data: 0
     type: dword
     state: present
-  with_items:
+  loop:
     - "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
     - "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
 
@@ -17,7 +17,7 @@
     data: 0
     type: dword
     state: present
-  with_items:
+  loop:
     - "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
     - "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
 
@@ -28,6 +28,6 @@
     data: 0
     type: dword
     state: present
-  with_items:
+  loop:
     - "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
     - "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"
